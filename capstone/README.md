@@ -21,6 +21,6 @@ Data on which the sentiment prediction and personality prediction can be done on
 The tweets were not cleaned( no emoticons, hyperlinks were removed). The text and full text of the extended test of the tweet were stored as separate fields
 
 ## Dataset Analysis
- The analysis done on the datasets is at :
+ The analysis done on the datasets is at : https://github.com/agvar/main_projects/blob/master/capstone/data_analysis/dataset_analysis.ipynb
  
  
