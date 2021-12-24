@@ -3,17 +3,15 @@
 As part of the Springboard Capstone project, data downloaded from resources like Kaggle and fast.ai and streaming data (from Twitter API using python) were analyzed.  
 
 ## Datasets 
-The datasets used are as follows:
+The datasets used were uploaded to AWS S3:
 Dataset  |Link | 
  :--- | :---:|
-Streaming Twitter data(downloaded from script)| |
-Amazon review full score dataset||
-Airline Tweet sentiment Analysis ||
-Twitter data for sentiment analysis||
-Myers Briggs Personality analysis||
+Streaming Twitter data(downloaded from script)|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/tweets/tweets.zip |
+Amazon review full score dataset|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/amazon_review_full_csv/amazon_review_full_csv.zip|
+Airline Tweet sentiment Analysis |https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/twitter_airline_sentiment/tweets_airline.zip|
+Twitter data for sentiment analysis|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/twitter_sentiment140/twitter_sentiment.zip|
+Myers Briggs Personality analysis|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/myers_briggs_personality_test/myers_briggs.zip|
 
-
-The sentiment data collected from amazon reviews, twitter airline review was modified to add a new field for sentiment of 0( negetive), positive (4) or neutral(2).  
 
 ## Script to collect tweet data
 The Capstone project being considered involves analyzing tweets for determining sentiment(positive, negetive and nuetral) and also to determine the personality type based on the Myers Briggs personality test.  
