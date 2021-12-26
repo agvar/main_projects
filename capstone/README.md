@@ -26,39 +26,39 @@ link to the script : https://github.com/agvar/main_projects/blob/master/capstone
  ## Model BenchMarking using AWS
  ![model benchmarking using AWS](https://github.com/agvar/main_projects/blob/master/capstone/images/capstone_project_baseline_aws.png)
  
-The benchmark architecture consists of the following components:
-1 : Read tweets using tweepy as (Producer)
-2 : Store tweet data fields as json files on AWS S3(Producer 
-3 : Push tweet data into Kinesis Data stream  (Producer )
-4 : Read tweet data from  Kinesis Data stream(Consumer)
-5 : Call the Comprehend API to determine sentiment of the tweet text(Consumer)
-6 : Store the tweet data with the sentiment and different sentiment scores on S3 (Consumer)
+The benchmark architecture consists of the following components:  
+1 : Read tweets using tweepy as (Producer)  
+2 : Store tweet data fields as json files on AWS S3(Producer    
+3 : Push tweet data into Kinesis Data stream  (Producer)**  
+4 : Read tweet data from  Kinesis Data stream(Consumer)  
+5 : Call the Comprehend API to determine sentiment of the tweet text(Consumer)  
+6 : Store the tweet data with the sentiment and different sentiment scores on S3 (Consumer)  
 
-The links to the scripts are as follows
-Producer :
-Consumer :
+The links to the scripts are as follows  
+Producer : https://github.com/agvar/main_projects/blob/master/capstone/scripts/twitter_stream_message_producer.py  
+Consumer : https://github.com/agvar/main_projects/blob/master/capstone/scripts/twitter_stream_message_subscriber.py  
 
-* Kinesis data stream was created using the AWS CLI:
-*aws kinesis create-stream --stream-name tweet_stream
+** Kinesis data stream was created using the AWS CLI:
+aws kinesis create-stream --stream-name tweet_stream  
 
-*aws kinesis describe-stream-summary --stream-name tweet_stream
+aws kinesis describe-stream-summary --stream-name tweet_stream  
 {
-    "StreamDescriptionSummary": {
-        "StreamName": "tweet_stream",
-        "StreamARN": "arn:aws:kinesis:us-east-2:047180200363:stream/tweet_stream",
-        "StreamStatus": "ACTIVE",
-        "StreamModeDetails": {
-            "StreamMode": "ON_DEMAND"
-        },
-        "RetentionPeriodHours": 24,
-        "StreamCreationTimestamp": 1640483978.0,
-        "EnhancedMonitoring": [
-            {
-                "ShardLevelMetrics": []
-            }
-        ],
-        "EncryptionType": "NONE",
-        "OpenShardCount": 4,
-        "ConsumerCount": 0
-    }
-}
+    "StreamDescriptionSummary": {  
+        "StreamName": "tweet_stream",  
+        "StreamARN": "arn:aws:kinesis:us-east-2:047180200363:stream/tweet_stream",  
+        "StreamStatus": "ACTIVE",  
+        "StreamModeDetails": {  
+            "StreamMode": "ON_DEMAND"  
+        },  
+        "RetentionPeriodHours": 24,  
+        "StreamCreationTimestamp": 1640483978.0,  
+        "EnhancedMonitoring": [  
+            {  
+                "ShardLevelMetrics": []  
+            }  
+        ],  
+        "EncryptionType": "NONE",  
+        "OpenShardCount": 4,  
+        "ConsumerCount": 0  
+    }  
+}  
