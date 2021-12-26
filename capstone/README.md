@@ -24,6 +24,8 @@ link to the script : https://github.com/agvar/main_projects/blob/master/capstone
  The analysis done on the datasets is at : https://github.com/agvar/main_projects/blob/master/capstone/data_analysis/dataset_analysis.ipynb
  
  ## Model BenchMarking using AWS
+ ![model benchmarking using AWS](url-to-image)
+ 
 The benchmark architecture consists of the following components:
 1) Tweet Producer - python script that pushes tweets into a Kinesis data stream
 2) Tweet Consumer- python script that reads from the Kineses data stream 
