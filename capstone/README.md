@@ -7,11 +7,11 @@ The intial idea of the project was run using AWS resources to benchmark the mode
 The datasets used were uploaded to AWS S3:
 Dataset  |Link | 
  :--- | :---:|
-Streaming Twitter data(downloaded using Python)|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/tweets/tweets.zip
+Streaming Twitter dataset (downloaded using Python)|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/tweets/tweets.zip
 Amazon review full score dataset|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/amazon_review_full_csv/amazon_review_full_csv.zip
-Airline Tweet sentiment Analysis |https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/twitter_airline_sentiment/tweets_airline.zip
-Twitter data for sentiment analysis|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/twitter_sentiment140/twitter_sentiment.zip
-Myers Briggs Personality analysis|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/myers_briggs_personality_test/myers_briggs.zip
+Airline Tweet sentiment dataset |https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/twitter_airline_sentiment/tweets_airline.zip
+Twitter data for sentiment dataset|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/twitter_sentiment140/twitter_sentiment.zip
+Myers Briggs Personality dataset|https://dataset20200101projectfiles.s3.us-east-2.amazonaws.com/capstone/input_data/myers_briggs_personality_test/myers_briggs.zip
 
 
 ## Script to collect tweet data
