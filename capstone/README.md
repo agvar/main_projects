@@ -27,8 +27,8 @@ link to the script : https://github.com/agvar/main_projects/blob/master/capstone
  ![model benchmarking using AWS](https://github.com/agvar/main_projects/blob/master/capstone/images/capstone_project_baseline_aws.png)
  
 The benchmark architecture consists of the following components:  
-1 : Read tweets using tweepy as (Producer)  
-2 : Store tweet data fields as json files on AWS S3(Producer    
+1 : Read tweets using tweepy (Producer)  
+2 : Store tweet data fields as json files on AWS S3(Producer)  
 3 : Push tweet data into Kinesis Data stream  (Producer)**  
 4 : Read tweet data from  Kinesis Data stream(Consumer)  
 5 : Call the Comprehend API to determine sentiment of the tweet text(Consumer)  
