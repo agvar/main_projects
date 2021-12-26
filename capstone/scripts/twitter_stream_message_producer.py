@@ -7,6 +7,7 @@ import argparse
 import boto3
 from twitter_credentials  import API_key,API_secret_key,Access_token,Acess_token_secret
 
+
 def process_tweet(tweet):
 
     if "extended_tweet" in tweet:
@@ -23,7 +24,8 @@ def process_tweet(tweet):
     else:
         time_zone=None
 
-    data={"created_at":tweet["created_at"],
+    data={"tweet_id":tweet["tweet_id"],
+        "created_at":tweet["created_at"],
           "text":text,
           "extended_tweet_text":extended_tweet_text,
           "source":tweet["source"],
@@ -37,6 +39,29 @@ def process_tweet(tweet):
 
         }
     return(data)
+
+def save_tweet_s3(data_list):
+    current_ts = datetime.now().strftime("%Y%m%d%H%M%S%f")
+    s3_bucket = 'dataset20200101projectfiles'
+    s3_file = s3.Object(s3_bucket, 'capstone/input_data/streaming/tweets_stream_' + current_ts + '.json')
+    return_s3 = s3_file.put(Body=(bytes(json.dumps(data_list).encode('UTF-8'))))
+    if return_s3['ResponseMetadata']['HTTPStatusCode'] != 200:
+        print("Failed to upload files to s3 bucket :{s3_bucket}")
+        sys.exit(1)
+
+def push_tweet_stream(data_list):
+    stream_name='tweet_stream'
+    try:
+        response_stream = kinesis_client.put_record(StreamName=stream_name, Data=json.dumps(data_list),PartitionKey='partition_key')
+
+    except Exception as e:
+        print(f"Failed writing to stream:{e}")
+
+    if response_stream['ResponseMetadata']['HTTPStatusCode'] != 200:
+        print("Failed to push data to stream :{stream_name}")
+        sys.exit(1)
+    shard_id=response_stream['ShardId']
+    shard_sequence=response_stream['SequenceNumber']
 
 
 #Streaming class override
@@ -61,20 +86,12 @@ class TwitterStreamListener(tweepy.StreamListener):
             if len(self.data_list)<self.file_max_tweet:
                 self.data_list.append(data)
                 if len(self.data_list)==self.file_max_tweet:
-                    current_ts=datetime.now().strftime("%Y%m%d%H%M%S%f")
-
-                    with open(os.path.join (os.getcwd(),'..','datasets','tweets',"tweets_stream_"+current_ts+".json"),'w+') as write_f:
-                        json.dump(self.data_list,write_f)
+                    save_tweet_s3(self.data_list)
+                    push_tweet_stream(self.data_list)
                     self.data_list=[]
 
 #       if status.retweeted:
 #           return
-#       try:
-#           print(f"data{status.id}")
-#           response_txt=kinesis_client.put_record(StreamName='tweet_stream',Data=json.dumps({"user_id":status.id,"tweet_text":status.text,"retweet_count":status.retweet_count}),PartitionKey='partition_key')
-
-#       except Exception as e:
-#           print(f"Failed writing to stream:{e}")
 
     def on_error(self,status_code):
        print(f"Error status code is{status_code}")
@@ -106,8 +123,9 @@ if __name__=='__main__':
     except Exception as e:
         print(f"Error during authentication{e}")
 
-    #creating kinesis client
-    #kinesis_client=boto3.client('kinesis',region_name='us-east-2')
+    #creating kinesis client and s3 resource
+    kinesis_client=boto3.client('kinesis',region_name='us-east-2')
+    s3 = boto3.resource('s3')
 
     #creating a stream to the twitter api
     twitterstreamlistener=TwitterStreamListener(args.file_max_tweet,args.collect_max_tweet)
