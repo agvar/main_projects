@@ -16,8 +16,8 @@ Myers Briggs Personality dataset|https://dataset20200101projectfiles.s3.us-east-
 
 ## Script to collect tweet data
 The Capstone project being considered involves analyzing tweets for determining sentiment(positive, negetive and nuetral) and also to determine the personality type based on the Myers Briggs personality test.  
-Data on which the sentiment prediction and personality prediction can be done on, was downloaded using the tweepy API.There were 10 json files created with 100,000 tweets each.
-The tweets were not cleaned( no emoticons, hyperlinks were removed). The text and full text of the extended test of the tweet were stored as separate fields.
+Data on which the sentiment prediction and personality prediction can be run, was downloaded using the tweepy API.There were a total of 1,000,000 million tweets downloaded across 10 json files (with 100,000 tweets each).
+The tweets were not cleaned( no emoticons, hyperlinks were removed). The text and full text of the extended test of the tweet were stored as separate fields.The json files created were uploaded to AWS S3.
 link to the script : https://github.com/agvar/main_projects/blob/master/capstone/scripts/twitter_stream_download_json.py
 
 ## Dataset Analysis
