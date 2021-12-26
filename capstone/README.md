@@ -38,7 +38,7 @@ The links to the scripts are as follows
 Producer : https://github.com/agvar/main_projects/blob/master/capstone/scripts/twitter_stream_message_producer.py  
 Consumer : https://github.com/agvar/main_projects/blob/master/capstone/scripts/twitter_stream_message_subscriber.py  
 
-** Kinesis data stream was created using the AWS CLI:
+** Kinesis data stream was created using the AWS CLI:  
 aws kinesis create-stream --stream-name tweet_stream  
 
 aws kinesis describe-stream-summary --stream-name tweet_stream  
