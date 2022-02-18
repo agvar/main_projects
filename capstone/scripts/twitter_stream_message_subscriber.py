@@ -18,6 +18,7 @@ def save_tweet_s3(data_list):
         sys.exit(1)
 
 def read_tweet_stream(kinesis_client,stream_name):
+
     sentiment_score_map={'POSITIVE':4,
                      'NEGATIVE':0,
                      'NEUTRAL':2
